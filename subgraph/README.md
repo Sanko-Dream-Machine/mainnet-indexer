@@ -71,3 +71,9 @@ The three commands used for deploying the subgraph need to communicate to the gr
 
 # Querying a Subgraph
 Once the subgraph has been deployed, it can be queried via GraphQL. From the development machine, you can query the EC2 directly. Contrary to the output of the `graph deploy` command, the GraphQL is reachable on port 80 (i.e. directly on the EC2 IP) and not on port 8080 (which is used on the docker container, running on EC2). From the dev machine, the GraphQL endpoint is `http://${GRAPH_IP}/subgraphs/name/${SUBGRAPH_NAME}`. For external access to the graph node use the API Gateway as described in [project's README.md](../README.md#Access-to-the-GraphQL-API).
+
+3.144.91.229
+
+graph create --node http://3.144.91.229:8020 stanko
+
+graph deploy --node http://3.144.91.229:8020/ --ipfs http://3.144.91.229:5001 stanko

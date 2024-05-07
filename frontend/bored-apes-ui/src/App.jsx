@@ -36,33 +36,15 @@ export default function App() {
       console.log('Querying for blocknumber', blocknumber)
       const { accounts } = await graphQLClient.request(
         gql`
-          query getTopHolders($numberOfHolders: Int!, $blocknumber: Int!) {
-            accounts(first: $numberOfHolders, block: { number: $blocknumber }) {
-              id
-              tokens {
-                contract {
-                  name
-                  symbol
-                }
-                token_id
-                uri
-                metadata {
-                  image
-                  attributes {
-                    key
-                    value
-                  }
-                }
-                previous_owners {
-                  account {
-                    id
-                  }
-                }
-              }
-            }
+        {
+          blocks(first: 5) {
+            id
+            number
+            timestamp
+            parentHash
           }
+        }
         `,
-        { numberOfHolders: 100, blocknumber }
       )
       return accounts
     }

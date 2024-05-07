@@ -1,0 +1,23 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: Blocks
+    network: sanko-mainnet
+    source:
+      address: "0x9c2730eA529c70E901fbDaf3e15E110CA8701C61"
+      abi: Blocks
+      startBlock: 1
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - ConverterAddition
+      abis:
+        - name: Blocks
+          file: ./abis/Blocks.json
+      blockHandlers:
+        - handler: handleBlock
+      file: ./src/blocks.ts
